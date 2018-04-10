@@ -15,11 +15,12 @@ export default class UploadForm extends Component {
 
     handleImageUpload = (file) => {
 
+//axios call to server to request hashed signature
 
         axios.get('/api/test').then(response => {
             console.log(response.data.signature)
         
-//for signed uploads
+//form data for signed uploads
 
         let formData = new FormData();
         formData.append("signature", response.data.signature)
@@ -27,8 +28,7 @@ export default class UploadForm extends Component {
         formData.append("timestamp", response.data.timestamp)
         formData.append("file", file[0]);
 
-
-//for unsigned uploads
+//form data for unsigned uploads
 
         // let formData = new FormData();
         // formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -40,9 +40,12 @@ export default class UploadForm extends Component {
         // for(var pair of formData.entries()) {
         //     console.log(pair); 
         //  }
-            
+
+//axios call to cloudinary using the URL set at top of page
         axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
             console.log(response.data);
+
+// Setting state with the secure_url
             this.setState({
                 uploadedFileCloudinaryUrl: response.data.secure_url
             })
@@ -80,7 +83,9 @@ export default class UploadForm extends Component {
                     >
                     <p>Upload</p>
                 </Dropzone>
-                {/* <input type='file' onChange={(e) => this.handleImageUpload(e.target.files[0])} /> */}
+
+                
+                {/* <input type='file' onChange={(e) => this.handleImageUpload(e.target.files)} /> */}
             </div>
             }
             </div>
