@@ -20,7 +20,7 @@ app.get('/api/test', (req, res) => {
         signature: signature,
         timestamp: timestamp
     };
-
+    
                   res.json(payload);
 
 })
