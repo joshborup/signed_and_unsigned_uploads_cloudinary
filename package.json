@@ -1,0 +1,30 @@
+{
+  "name": "cloudinary-client",
+  "version": "0.1.0",
+  "private": true,
+  "main": "server/index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "cloudinary": "^1.11.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-drop-zone": "^3.0.5",
+    "react-dropzone": "^4.2.9",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/api/": {
+      "target": "http://localhost:4000"
+    }
+  }
+}
