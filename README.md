@@ -9,7 +9,7 @@ All of the needed information is in the dashboard, however you can set up custom
 
 ![alt text](./src/media/preset1.png "sign up for cloudinary")
 
-make a preset and head over to your react app.
+make a preset and head over to your app.
 
 ## backend
 first set up your server file
@@ -61,5 +61,46 @@ make a signature object to send to your react app
 
 switch over to your react-app and create a function that will initate the signature request from the server when someone has uploaded an image to the client
 
-grab the payload passed from the server and insert it along with the file, api key and timestamp into a new form useing `new FormData()` 
+grab the payload passed from the server with and axios call and insert it along with the file, api key and timestamp into a new form using `new FormData()`
+
+```
+    handleImageUpload = (file) => {
+```
+axios call to server to request hashed signature
+```
+axios.get('/api/upload').then(response => {
+            console.log(response.data.signature)
+ ```       
+form data for signed uploads
+```
+        let formData = new FormData();
+        formData.append("signature", response.data.signature)
+        formData.append("api_key", "496317639374845");
+        formData.append("timestamp", response.data.timestamp)
+        formData.append("file", file[0]);
+```
+
+this is all then uploaded to cloudinary using the API Base URL
+
+
+axios call to cloudinary using the URL set at top of page
+```
+        axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
+            console.log(response.data);
+```
+Set state with the secure_url
+```
+            this.setState({
+                uploadedFileCloudinaryUrl: response.data.secure_url
+            })
+        }).catch( err => {
+            console.log(err);
+        })
+        
+    })
+}
+```
+
+You can then either save that url in your database or display it directly on the page
+
 
