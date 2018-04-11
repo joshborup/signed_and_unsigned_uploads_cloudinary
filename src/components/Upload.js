@@ -84,7 +84,7 @@ export default class UploadForm extends Component {
                     <p>Upload</p>
                 </Dropzone>
 
-                
+                {/* if you prefer to use an html input tag */}
                 {/* <input type='file' onChange={(e) => this.handleImageUpload(e.target.files)} /> */}
             </div>
             }
