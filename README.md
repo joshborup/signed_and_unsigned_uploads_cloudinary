@@ -84,8 +84,6 @@ form data for signed uploads
 
 this is all then uploaded to cloudinary using the API Base URL
 
-
-axios call to cloudinary using the URL set at top of page
 ```
         axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
             console.log(response.data);
