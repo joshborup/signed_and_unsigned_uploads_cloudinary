@@ -7,9 +7,11 @@
 
 All of the needed information is in the dashboard, however you can set up custom presets to transform the image on upload by headig to the settings page.
 
+from the settings page under the upload tab, you can create a custom preset which will apply custom transformations on upload
+
 ![alt text](./src/media/preset1.png "sign up for cloudinary")
 
-make a preset and head over to your app.
+after making a preset, head over to your app.
 
 ## backend
 first set up your server file
