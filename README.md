@@ -88,7 +88,7 @@ this is all then uploaded to cloudinary using the API Base URL which can be foun
         axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
             console.log(response.data);
 ```
-Set state with the secure_url
+Set state with the secure url for the uploaded image that is sent back from cloudinary 
 ```
             this.setState({
                 uploadedFileCloudinaryUrl: response.data.secure_url
