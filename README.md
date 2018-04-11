@@ -63,7 +63,7 @@ make a signature object to send to your react app
 
 switch over to your react-app and create a function that will initate the signature request from the server when someone has uploaded an image to the client
 
-grab the payload passed from the server with and axios call and insert it along with the file, api key and timestamp into a new form using `new FormData()`
+grab the payload passed from the server with an axios call and insert it along with the image-file, api key and timestamp into a new form using `new FormData()`
 
 ```
 handleImageUpload = (file) => {
