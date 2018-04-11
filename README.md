@@ -69,7 +69,7 @@ handleImageUpload = (file) => {
 axios call to server to request hashed signature
 ```
     axios.get('/api/upload').then(response => {
-            console.log(response.data.signature)
+        
  ```       
 form data for signed uploads
 ```
