@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 
-const CLOUDINARY_UPLOAD_PRESET = 'unsigned_preset';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/saturnslist/image/upload';
+const CLOUDINARY_UPLOAD_PRESET = 'devmountain_unsigned';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/devmountain/image/upload';
 
 export default class UploadForm extends Component {
     constructor(props){
@@ -17,14 +17,14 @@ export default class UploadForm extends Component {
 
 //axios call to server to request hashed signature
 
-        axios.get('/api/test').then(response => {
+        axios.get('/api/upload').then(response => {
             console.log(response.data.signature)
         
 //form data for signed uploads
 
         let formData = new FormData();
         formData.append("signature", response.data.signature)
-        formData.append("api_key", "635226183275142");
+        formData.append("api_key", "496317639374845");
         formData.append("timestamp", response.data.timestamp)
         formData.append("file", file[0]);
 
