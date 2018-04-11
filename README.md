@@ -64,11 +64,11 @@ switch over to your react-app and create a function that will initate the signat
 grab the payload passed from the server with and axios call and insert it along with the file, api key and timestamp into a new form using `new FormData()`
 
 ```
-    handleImageUpload = (file) => {
+handleImageUpload = (file) => {
 ```
 axios call to server to request hashed signature
 ```
-axios.get('/api/upload').then(response => {
+    axios.get('/api/upload').then(response => {
             console.log(response.data.signature)
  ```       
 form data for signed uploads
