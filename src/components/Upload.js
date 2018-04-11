@@ -22,17 +22,17 @@ export default class UploadForm extends Component {
         
 //form data for signed uploads
 
-        let formData = new FormData();
-        formData.append("signature", response.data.signature)
-        formData.append("api_key", "496317639374845");
-        formData.append("timestamp", response.data.timestamp)
-        formData.append("file", file[0]);
+        // let formData = new FormData();
+        // formData.append("signature", response.data.signature)
+        // formData.append("api_key", "496317639374845");
+        // formData.append("timestamp", response.data.timestamp)
+        // formData.append("file", file[0]);
 
 //form data for unsigned uploads
 
-        // let formData = new FormData();
-        // formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-        // formData.append("file", file[0]);
+        let formData = new FormData();
+        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+        formData.append("file", file[0]);
         
 
 // uncomment to see what the form looks like in console
@@ -46,14 +46,13 @@ export default class UploadForm extends Component {
             console.log(response.data);
 
 // Setting state with the secure_url
-            this.setState({
-                uploadedFileCloudinaryUrl: response.data.secure_url
-            })
-        }).catch( err => {
-            console.log(err);
+                this.setState({
+                    uploadedFileCloudinaryUrl: response.data.secure_url
+                })
+            }).catch( err => {
+                console.log(err);
+            }) 
         })
-        
-    })
     }     
 
     render() {
@@ -63,7 +62,7 @@ export default class UploadForm extends Component {
             this.state.uploadedFileCloudinaryUrl
             ? 
             <div className='image-container'>
-                <img src={this.state.uploadedFileCloudinaryUrl}/>
+                <img src={this.state.uploadedFileCloudinaryUrl} alt='cloudinary example'/>
                 <Dropzone
                         multiple={false}
                         accept="image/*"
