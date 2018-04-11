@@ -82,7 +82,7 @@ form data for signed uploads
         formData.append("file", file[0]);
 ```
 
-this is all then uploaded to cloudinary using the API Base URL
+this is all then uploaded to cloudinary using the API Base URL which can be found on your cloudinary dashboard account
 
 ```
         axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
