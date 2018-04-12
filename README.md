@@ -11,7 +11,7 @@ from the settings page under the upload tab, you can create a custom preset whic
 
 ![alt text](./src/media/preset1.png "sign up for cloudinary")
 
-after making a preset, head over to your app.
+after making your preset, set it as the default preset on upload and then head over to your app.
 
 ## backend
 first set up your server file
@@ -29,7 +29,7 @@ const port = 4000
 app.listen(port, ()=> console.log(`listening on port ${port}`))
 ```
 
-then make your endpoints so you can pass a signature to your front end that will allow you image to have access to your cloudinary account. you will place this in either your server file or controller based on your file setup
+then make your endpoints so you can pass a signature to your front end that will allow your image to have access to your cloudinary account. you will place this in either your server file or controller based on your file setup
 
 ```
 app.get('/api/upload', (req, res) => {
@@ -44,7 +44,7 @@ cloudinary API secret stored in the .env file
 ```
     const api_secret  = process.env.CLOUDINARY_SECRET_API;
 ```
-user built in cloudinary api sign request function to  create hashed signature with your api secret and UNIX timestamp
+ use the built in cloudinary api sign request function to create hashed signature with your api secret and UNIX timestamp
 ```
     const signature = cloudinary.utils.api_sign_request({ timestamp: timestamp }, api_secret);
 ```
@@ -82,13 +82,13 @@ form data for signed uploads
         formData.append("file", file[0]);
 ```
 
-this is all then uploaded to cloudinary using the API Base URL which can be found in your cloudinary account dashboard 
+the form is then uploaded to cloudinary using the API Base URL which can be found in your cloudinary account dashboard 
 
 ```
         axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
             console.log(response.data);
 ```
-Set state with the secure url for the uploaded image that is sent back from cloudinary 
+Set state with the secure url that is returned from cloudinary  
 ```
             this.setState({
                 uploadedFileCloudinaryUrl: response.data.secure_url
